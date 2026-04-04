@@ -128,9 +128,9 @@ export default function Home() {
           </MyButton>
         </div>
 
-        {expandedUrl && (
+        {/* {expandedUrl && (
           <div className="p-3 border rounded-lg break-all">{expandedUrl}</div>
-        )}
+        )} */}
 
         {results.length > 0 && (
           <>
