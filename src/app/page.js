@@ -43,6 +43,7 @@ export default function Home() {
 
     if (!isShopeeLink) {
       setError("Link không hợp lệ");
+      setLoading(false);
       return null;
     }
 
@@ -106,7 +107,7 @@ export default function Home() {
           Chuyển đổi link sản phẩm shopee để dùng mã giảm giá facebook
         </h2>
 
-        <div className="w-full flex gap-3">
+        <div className="w-full flex flex-col gap-3">
           <div className="w-full">
             <input
               className="border w-full h-[50px] p-3 rounded-lg focus:outline-[#F05D40]"
@@ -123,7 +124,7 @@ export default function Home() {
           text="Mở rộng link"
         /> */}
           <MyButton
-            className="bg-[#F05D40]"
+            className="w-full bg-[#F05D40]"
             func={convertToAffiliateLink}
             text="Tạo Link"
           >
