@@ -1,7 +1,7 @@
 "use client";
 
 import { MyButton } from "@/components/MyButton";
-import { Copy, Info, Link, OctagonAlert } from "lucide-react";
+import { Copy, Info, Link, Loader, OctagonAlert } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
@@ -31,6 +31,7 @@ export default function Home() {
   const [expandedUrl, setExpandedUrl] = useState("");
   const [results, setResults] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const affiliateId = "17311150058";
   const subId = "fb-link";
@@ -70,6 +71,7 @@ export default function Home() {
   };
 
   async function convertToAffiliateLink() {
+    setLoading(true);
     const expandedUrl = await expandLink();
     if (!expandedUrl) return;
 
@@ -82,6 +84,7 @@ export default function Home() {
 
     const converted = `https://s.shopee.vn/an_redir?origin_link=${encoded}&share_channel_code=4&affiliate_id=${affiliateId}&sub_id=${subId}`;
 
+    setLoading(false);
     setResults(converted);
     toast.success("Đã chuyển đổi thành công");
   }
@@ -124,7 +127,7 @@ export default function Home() {
             func={convertToAffiliateLink}
             text="Tạo Link"
           >
-            <Link className="w-5 h-5" />
+            {loading ? <Loader className="w-5 h-5 animate-spin" /> : <Link className="w-5 h-5" />}
           </MyButton>
         </div>
 
