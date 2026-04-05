@@ -34,7 +34,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
 
   const affiliateId = "17311150058";
-  const subId = "fb-link";
+  const subId = "fbweb----";
 
   const expandLink = async () => {
     const inputDomain = ["shopee.vn", "vn.shp.ee"];
