@@ -128,7 +128,11 @@ export default function Home() {
             func={convertToAffiliateLink}
             text="Tạo Link"
           >
-            {loading ? <Loader className="w-5 h-5 animate-spin" /> : <Link className="w-5 h-5" />}
+            {loading ? (
+              <Loader className="w-5 h-5 animate-spin" />
+            ) : (
+              <Link className="w-5 h-5" />
+            )}
           </MyButton>
         </div>
 
@@ -192,9 +196,9 @@ export default function Home() {
             <br />
             3. Bấm <b>Mở Shopee</b> để mở trang Shopee mua hàng ngay.
             <br />
-            4. Bấm <b>Mở Facebook</b> để vào facebook, dán link vào phần comment
-            bài viết trong group, sau đó nhấn link để vào Shopee và dùng mã giảm
-            giá 22% hoặc 20% cho sản phẩm bạn vừa chuyển đổi.
+            4. Bấm <b>Mở Facebook</b> để vào facebook, dán link mới vào phần
+            comment bài viết trong group, sau đó nhấn link để vào Shopee và dùng
+            mã giảm giá 22% hoặc 20% cho sản phẩm bạn vừa chuyển đổi.
           </div>
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-2 font-bold">
@@ -202,9 +206,21 @@ export default function Home() {
               Lưu ý
             </div>
             <div className="font-semibold">
-              Mã Facebook có thể lọc sản phẩm và lọc acc Shopee (tức là không
-              phải sản phẩm nào sau chuyển đổi cũng xài được mã giảm giá).
+              Cần phải dán link mới chuyển đổi vào facebook để xài được mã giảm
+              giá (đơn hàng tối thiểu là 50K). Mã Facebook có thể lọc sản phẩm và lọc acc Shopee (tức là
+              không phải sản phẩm nào sau chuyển đổi cũng xài được mã giảm giá).
             </div>
+            <div className="flex items-center gap-2 font-bold">
+              <Info className="w-5 h-5 text-[#0B61F1]" />
+              Cách lấy link shopee của bạn
+            </div>
+            <Image
+              src="/copy-link.png"
+              loading="eager"
+              alt="shopee"
+              width={1000}
+              height={1000}
+            />
             <Image
               src="/mgg.jpg"
               loading="eager"
