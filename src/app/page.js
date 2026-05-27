@@ -23,7 +23,7 @@ function extractShopeeIds(expandedUrl) {
 }
 
 function buildCanonicalShopeeUrl(shopId, itemId) {
-  return `https://shopee.vn/opaanlp/${shopId}/${itemId}`;
+  return `https://shopee.vn/product/${shopId}/${itemId}`;
 }
 
 export default function Home() {
@@ -33,7 +33,8 @@ export default function Home() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const affiliateId = "17311150058";
+  // const affiliateId = "17311150058";
+  const affiliateId = "17349230357";
   const subId = "fbweb----";
 
   const expandLink = async () => {
