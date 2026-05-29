@@ -26,6 +26,31 @@ function buildCanonicalShopeeUrl(shopId, itemId) {
   return `https://shopee.vn/product/${shopId}/${itemId}`;
 }
 
+// function normalizeShopeeUrl(inputUrl) {
+//   try {
+//     const ids = extractShopeeIds(inputUrl);
+
+//     if (!ids) return null;
+
+//     const parsed = new URL(inputUrl);
+
+//     const canonical = `https://shopee.vn/product/${ids.shopId}/${ids.itemId}`;
+
+//     const final = new URL(canonical);
+
+//     // preserve gads_t_sig nếu có
+//     const gadsSig = parsed.searchParams.get("gads_t_sig");
+
+//     if (gadsSig) {
+//       final.searchParams.set("gads_t_sig", gadsSig);
+//     }
+
+//     return final.toString();
+//   } catch {
+//     return null;
+//   }
+// }
+
 export default function Home() {
   const [input, setInput] = useState("");
   const [expandedUrl, setExpandedUrl] = useState("");
@@ -33,8 +58,8 @@ export default function Home() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // const affiliateId = "17311150058";
-  const affiliateId = "17349230357";
+  const affiliateId = "17311150058";
+  // const affiliateId = "17349230357";
   const subId = "fbweb----";
 
   const expandLink = async () => {
@@ -91,6 +116,26 @@ export default function Home() {
     toast.success("Đã chuyển đổi thành công");
   }
 
+  // async function convertAffiliateLink() {
+  //   setLoading(true);
+  //   const expandedUrl = await expandLink();
+  //   if (!expandedUrl) return;
+
+  //   const normalized = normalizeShopeeUrl(expandedUrl);
+
+  //   if (!normalized) {
+  //     return null;
+  //   }
+
+  //   const encoded = encodeURIComponent(normalized);
+
+  //   const converted = `https://s.shopee.vn/an_redir?origin_link=${encoded}&share_channel_code=4&affiliate_id=${affiliateId}&sub_id=${subId}`;
+
+  //   setLoading(false);
+  //   setResults(converted);
+  //   toast.success("Đã chuyển đổi thành công");
+  // }
+
   const copy = () => {
     navigator.clipboard.writeText(results);
     toast.success("Đã copy thành công");
@@ -105,7 +150,8 @@ export default function Home() {
 
       <div className="bg-white space-y-4 p-4 rounded-lg shadow-[0px_0px_10px_0px_#00000026]">
         <h2 className="text-xl font-bold">
-          Chuyển đổi link sản phẩm shopee để dùng mã giảm giá facebook
+          Chuyển đổi link sản phẩm shopee để dùng mã giảm giá facebook 22% tối đa 100K cho
+          ngành hàng thời trang!
         </h2>
 
         <div className="w-full flex flex-col gap-3">
@@ -199,7 +245,7 @@ export default function Home() {
             <br />
             4. Bấm <b>Mở Facebook</b> để vào facebook, dán link mới vào phần
             comment bài viết trong group, sau đó nhấn link để vào Shopee và dùng
-            mã giảm giá 22% hoặc 20% cho sản phẩm bạn vừa chuyển đổi.
+            mã giảm giá 22% cho sản phẩm bạn vừa chuyển đổi.
           </div>
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-2 font-bold">
@@ -208,8 +254,9 @@ export default function Home() {
             </div>
             <div className="font-semibold">
               Cần phải dán link mới chuyển đổi vào facebook để xài được mã giảm
-              giá (đơn hàng tối thiểu là 50K). Mã Facebook có thể lọc sản phẩm và lọc acc Shopee (tức là
-              không phải sản phẩm nào sau chuyển đổi cũng xài được mã giảm giá).
+              giá (đơn hàng tối thiểu là 150K). Mã Facebook có thể lọc sản phẩm
+              và lọc acc Shopee (tức là không phải sản phẩm nào sau chuyển đổi
+              cũng xài được mã giảm giá).
             </div>
             <div className="flex items-center gap-2 font-bold">
               <Info className="w-5 h-5 text-[#0B61F1]" />
@@ -223,7 +270,7 @@ export default function Home() {
               height={1000}
             />
             <Image
-              src="/mgg.jpg"
+              src="/mgg-thoitrang.png"
               loading="eager"
               alt="shopee"
               width={1000}
